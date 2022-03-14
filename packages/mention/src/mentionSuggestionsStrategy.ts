@@ -102,8 +102,8 @@ export default (
     .map((trigger) => escapeRegExp(trigger))
     .join('|')})`;
   const MENTION_REGEX = supportWhiteSpace
-    ? new RegExp(`${triggerPattern}(${regExp}|\\s)*`, 'g')
-    : new RegExp(`(\\s|^)${triggerPattern}${regExp}*`, 'g');
+    ? new RegExp(`.*${triggerPattern}(${regExp}|\\s)*`, 'g')
+    : new RegExp(`(.*)${triggerPattern}${regExp}*`, 'g');
 
   return (contentBlock: ContentBlock, callback: FindWithRegexCb) => {
     findWithRegex(MENTION_REGEX, contentBlock, supportWhiteSpace, callback);
