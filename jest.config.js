@@ -1,13 +1,8 @@
-const base = require('./jest.config.base.js');
+const base = require('../../jest.config.base.js');
+const packageName = require('./package').name;
 
 module.exports = {
   ...base,
-  projects: [
-    {
-      ...base,
-      displayName: 'root',
-      modulePathIgnorePatterns: ['packages'],
-    },
-    '<rootDir>/packages/*/jest.config.js',
-  ],
+  displayName: packageName,
+  name: packageName,
 };
